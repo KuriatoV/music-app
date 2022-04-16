@@ -17,7 +17,9 @@ model User {
   updatedAt DateTime @updatedAt
   email String @unique
   password String
-  playlists Playlist[] 
+  playlists Playlist[]
+  firstName String 
+  lastName String  
 } 
 
 model Song{
@@ -38,6 +40,7 @@ model Artist {
   updatedAt DateTime @updatedAt
   songs Song[]
   name String @unique
+  avatar String
 }
 
 model Playlist {

@@ -4,7 +4,6 @@ import bcrypt from 'bcrypt';
 import { artistsData } from './songsData';
 
 const prisma = new PrismaClient();
-
 const run = async () => {
     await Promise.all(
         artistsData.map(async (artist) => {
@@ -20,6 +19,7 @@ const run = async () => {
                             url: song.url,
                         })),
                     },
+                    avatar: 'https://placekitten.com/300/300',
                 },
             });
         })
@@ -34,6 +34,8 @@ const run = async () => {
         create: {
             email: 'user@test.com',
             password: bcrypt.hashSync('password', salt),
+            firstName: 'Valentyn',
+            lastName: 'Kuriato',
         },
     });
 

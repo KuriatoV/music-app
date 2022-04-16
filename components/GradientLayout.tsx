@@ -9,7 +9,7 @@ interface Props {
     subtitle: string;
     description: string;
     roundImage: boolean;
-    children: React.ReactChildren;
+    children: React.ReactElement;
 }
 
 const GradientLayout: React.FC<Props> = ({
