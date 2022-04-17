@@ -1,3 +1,4 @@
+import { redirect } from 'next/dist/server/api-utils';
 import GradientLayout from '../../components/GradientLayout';
 import { validateToken } from '../../lib/auth';
 import prismaClient from '../../lib/prisma';
@@ -34,7 +35,18 @@ const Playlist = ({ playlist }) => {
 };
 
 export const getServerSideProps = async ({ query, req }) => {
-    const user = validateToken(req.cookies.TRAX_ACCESS_TOKEN);
+    let user;
+    try {
+        user = validateToken(req.cookies.TRAX_ACCESS_TOKEN);
+    } catch (error) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/signin',
+            },
+        };
+    }
+
     const [playlist] = await prismaClient.playlist.findMany({
         where: {
             id: +query.id,
