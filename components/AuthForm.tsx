@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Button, Flex, Input } from '@chakra-ui/react';
+import { Box, Button, Flex, Input, LinkBox } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useSWRConfig } from 'swr';
+// import { useSWRConfig } from 'swr';
 import NextImage from 'next/image';
+import NextLink from 'next/link';
 import { auth } from '../lib/mutations';
 
 const AuthForm: React.FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
@@ -58,8 +59,29 @@ const AuthForm: React.FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
                         >
                             {mode}
                         </Button>
+                        <LinkBox>
+                            <NextLink
+                                href={mode === 'signin' ? '/signup' : '/signin'}
+                                passHref
+                            >
+                                <Button
+                                    bg="gray.600"
+                                    marginTop="16px"
+                                    sx={{
+                                        '&:hover': {
+                                            bg: 'gray.300',
+                                        },
+                                    }}
+                                >
+                                    {mode === 'signin' ? 'signup' : 'signin'}
+                                </Button>
+                            </NextLink>
+                        </LinkBox>
                     </form>
                 </Box>
+                {/* Go to {mode === 'signup' ? 'signin' : 'signup'} up */}
+
+                {/* <NextLink href="/signup" /> */}
             </Flex>
         </Box>
     );

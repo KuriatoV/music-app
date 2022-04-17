@@ -12,7 +12,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
         user = await prismaClient.user.create({
-            data: { email, password: bcrypt.hashSync(password, salt) },
+            data: {
+                email,
+                password: bcrypt.hashSync(password, salt),
+                firstName: 'Somename',
+                lastName: 'SomeLastName',
+            },
         });
     } catch (e) {
         res.status(401);

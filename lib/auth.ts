@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from './prisma';
 
-export const validateToken = (token) => jwt.verify(token, 'hello')
+export const validateToken = (token) => jwt.verify(token, 'hello');
 
 export const validateRoute = (handler) => {
     return async (req: NextApiRequest, res: NextApiResponse) => {
@@ -23,6 +23,7 @@ export const validateRoute = (handler) => {
             } catch (error) {
                 res.status(401);
                 res.json({ error: 'Not Authorized' });
+                console.warn(error);
                 return;
             }
 
