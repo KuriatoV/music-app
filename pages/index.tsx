@@ -23,7 +23,7 @@ const ArtistCard = ({ artist }) => {
 };
 
 const Home = ({ artists }) => {
-    const { user, isLoading, error } = useMe();
+    const { user } = useMe();
 
     return (
         <GradientLayout
