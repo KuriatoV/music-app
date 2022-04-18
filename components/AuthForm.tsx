@@ -16,7 +16,7 @@ const AuthForm: React.FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        const user = await auth(mode, { email, password });
+        await auth(mode, { email, password });
         // cache ?
         setIsLoading(false);
         router.push('/');

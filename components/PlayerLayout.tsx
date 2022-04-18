@@ -20,7 +20,7 @@ const PlayerLayout: React.FC = ({ children }) => {
                 height="100px"
                 bg="gray.600"
             >
-                <PlayerBar  />
+                <PlayerBar />
             </Box>
         </Box>
     );

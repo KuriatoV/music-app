@@ -6,7 +6,6 @@ import {
     Box,
     Text,
     Flex,
-    Image,
     ButtonGroup,
     RangeSlider,
     RangeSliderFilledTrack,

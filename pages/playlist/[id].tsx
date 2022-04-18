@@ -1,4 +1,3 @@
-import { redirect } from 'next/dist/server/api-utils';
 import GradientLayout from '../../components/GradientLayout';
 import { validateToken } from '../../lib/auth';
 import prismaClient from '../../lib/prisma';
